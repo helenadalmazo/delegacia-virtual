@@ -1,0 +1,409 @@
+<html>
+<meta charset="utf-8" />
+
+<head>
+    <title>Delegacia Virtual</title>
+	<link rel="shortcut icon" href="police-officer-icon.png">
+
+    <!-- material design lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- https://getmdl.io/customize/index.html -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-red.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <!-- css import -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Simple header with scrollable tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">REC</span>
+            </div>
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Bem vindo(a)!</a>
+                <a href="#scroll-tab-2" class="mdl-layout__tab">Cadastrar BO</a>
+                <a href="#scroll-tab-3" class="mdl-layout__tab">Consultar BO</a>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+        </div>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+                <div class="page-content">
+
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--middle mdl-cell--2-col"></div>
+                        <div class="mdl-cell--middle mdl-cell--8-col">
+                            <div class="mdl-card--border">
+
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Delegacia Virtual</h2>
+                                </div>
+
+                                <div class="mdl-card__supporting-text">
+                                    No Sistema de Delegacia Eletrônica, você pode registrar diversas modalidades de ocorrências acessando a aba "Cadastrar BO". 
+									O que não estiver contemplado nessas modalidades deve ser registrado de forma presencial nas delegacias da Polícia Civil.
+                                </div>
+
+                                <div class="mdl-card__supporting-text">
+                                    Para consultar os Boletins de Ocorrências já cadastrados, navegue até "Consultar BO". Para isso tenha o Número do seu Protocolo em mãos.
+                                </div>
+
+                                <div class="mdl-card__supporting-text">
+                                    Atualmente há usuários ativos <strong> <label id="clientsCount"> 0 </label> </strong> no Sistema de Delegacia Eletrônica.
+                                    <div id="clientsCountBadge" class="material-icons mdl-badge mdl-badge--overlap" data-badge="0">account_box</div>
+                                </div>
+
+                                <!--
+								<div class="mdl-card__actions">
+									<a href="(URL or function)">Related Action</a>
+								</div>
+								-->
+                            </div>
+                        </div>
+                        <div class="mdl-cell--middle mdl-cell--2-col"></div>
+                    </div>
+
+                    <footer class="mdl-mini-footer">
+                        <div class="mdl-mini-footer__right-section">
+                            <div class="mdl-logo">Title</div>
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Privacy & Terms</a></li>
+                            </ul>
+                        </div>
+                    </footer>
+
+                </div>
+            </section>
+			
+            <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+                <div class="page-content">
+				
+					<div id="gridModalidades" class="mdl-grid">
+                        <div class="mdl-cell--middle mdl-cell--2-col"></div>
+                        <div class="mdl-cell--middle mdl-cell--8-col">
+
+                            <ul class="demo-list-icon mdl-list">
+
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+										<i class="material-icons mdl-list__item-avatar">directions_car</i>
+										<button class="mdl-button mdl-js-button mdl-button--primary helena-button-modalidade">
+										  ACIDENTE DE TRÂNSITO SEM VÍTIMA
+										</button>
+										<span class="mdl-list__item-text-body">
+										Acidente envolvendo veículo automotor sem vítima.
+										</span>
+                                    </span>
+                                </li>
+
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+										<i class="material-icons mdl-list__item-avatar">perm_device_information</i>
+										<button class="mdl-button mdl-js-button mdl-button--primary helena-button-modalidade">
+										  PERDA DE DOCUMENTOS E/OU OBJETOS
+										</button>
+										<span class="mdl-list__item-text-body">
+										A perda é caracterizada por um extravio, sumiço ou desaparecimento de objeto ou documento.
+										</span>
+                                    </span>
+                                </li>
+
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+										<i class="material-icons mdl-list__item-avatar">add_to_home_screen</i>
+										<button class="mdl-button mdl-js-button mdl-button--primary helena-button-modalidade">
+										  RECUPERAÇÃO DE DOCUMENTOS E/OU OBJETOS
+										</button>
+										<span class="mdl-list__item-text-body">
+										Registre aqui o encontro do documento ou objeto que você registrou a perda.
+										</span>
+                                    </span>
+                                </li>
+
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+										<i class="material-icons mdl-list__item-avatar">person</i>
+										<button class="mdl-button mdl-js-button mdl-button--primary helena-button-modalidade">
+										  AMEAÇA, CALÚNIA, INJÚRIA, DIFAMAÇÃO 
+										</button>
+										<span class="mdl-list__item-text-body">
+										Registro destinado a Ameaça, Calúnia, Injúria e Difamação.
+										</span>
+                                    </span>
+                                </li>
+
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+										<i class="material-icons mdl-list__item-avatar">directions_run</i>
+										<button class="mdl-button mdl-js-button mdl-button--primary helena-button-modalidade">
+										  FURTO E ROUBO
+										</button>
+										<span class="mdl-list__item-text-body">
+											Furto é tirar algo pertencente a outra pessoa sem permissão, sem violência.
+											Roubo é tirar algo pertencente a outra pessoa usando de violência ou grave ameaça contra aquela.
+											Para registro de furto ou roubo de veículo, procure a Delegacia de Polícia mais próxima.
+										</span>
+                                    </span>
+                                </li>
+
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+										<i class="material-icons mdl-list__item-avatar">person</i>
+										<button class="mdl-button mdl-js-button mdl-button--primary helena-button-modalidade">
+										  DENÚNCIA ANÔNIMA
+										</button>
+										<span class="mdl-list__item-text-body">
+										Faça aqui sua denúncia. Garantimos o seu anonimato.
+										</span>
+                                    </span>
+                                </li>
+
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+										<i class="material-icons mdl-list__item-avatar">flash_on</i>
+										<button class="mdl-button mdl-js-button mdl-button--primary helena-button-modalidade">
+										  DANOS CAUSADOS POR FENÔMENOS NATURAIS
+										</button>
+										<span class="mdl-list__item-text-body">
+										Apenas para registro de ocorrência de dano provocado por fenômenos naturais (enchente, enxurrada, vendaval, maremoto, tufões, ciclones, tornados, enxurradas, deslizamento de terras, tremores de terra, etc...)
+										</span>
+                                    </span>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        <div class="mdl-cell--middle mdl-cell--2-col"></div>
+
+                    </div>
+
+                    <div id="gridFormulario" class="mdl-grid">
+                        <div class="mdl-cell--middle mdl-cell--2-col"></div>
+                        <div class="mdl-cell--middle mdl-cell--8-col">
+
+                            <div class="mdl-card--border mdl-shadow--8dp">
+                                <!--
+								<div class="mdl-card__title"> <h2 class="mdl-card__title-text">Dados da ocorrência</h2> </div>
+								-->
+
+                                <div class="mdl-card__supporting-text helena-width-supporting-text">
+                                    <div class="mdl-card__title">
+                                        <h2 class="mdl-card__title-text">Dados da ocorrência</h2> </div>
+
+                                    <span class="mdl-chip">
+										<span id="chipModalidade" class="mdl-chip__text"> </span>
+                                    </span>
+
+                                    <form id="formBO">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" type="text" name="local">
+                                            <label class="mdl-textfield__label" for="sample3">Local</label>
+                                        </div>
+
+                                        <!--
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" id="sample3">
+											<label class="mdl-textfield__label" for="sample3">Tipo de Local</label>
+										</div>
+										-->
+
+                                        <label>Tipo de Local: .<label>
+										<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1-publica">
+											<input type="radio" id="option-1-via-publica" class="mdl-radio__button" name="tipoLocalOptions" value="1" checked>
+											<span class="mdl-radio__label">Via pública</span>
+										</label>
+										<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2-residencia">
+											<input type="radio" id="option-2-residencia" class="mdl-radio__button" name="tipoLocalOptions" value="2">
+											<span class="mdl-radio__label">Residência</span>
+										</label>
+										<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3-outros">
+											<input type="radio" id="option-3-outros" class="mdl-radio__button" name="tipoLocalOptions" value="3">
+											<span class="mdl-radio__label">Outros</span>
+										</label>
+
+										<!--
+										<button id="tipo-de-local" class="mdl-button mdl-js-button mdl-button--icon">
+										  <i class="material-icons">more_vert</i>
+										</button>
+										<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="tipo-de-local">
+										  <li class="mdl-menu__item">Via pública</li>
+										  <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Residência</li>
+										  <li class="mdl-menu__item">Outros</li>
+										</ul>
+										-->
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" name="dataFato">
+											<label class="mdl-textfield__label" for="sample3">Data do fato</label>
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" name="horaFato">
+											<label class="mdl-textfield__label" for="sample3">Hora do fato</label>
+										</div>
+
+										<div class="mdl-card__title">
+											<h2 class="mdl-card__title-text">Vítima</h2>
+										</div>
+
+										<!--
+										<label>Pessoa<label>
+										<button id="pessoa-fisica-juridica" class="mdl-button mdl-js-button mdl-button--icon">
+											<i class="material-icons">more_vert</i>
+										</button>
+										<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="pessoa-fisica-juridica">
+											<li class="mdl-menu__item">Física</li>
+											<li class="mdl-menu__item">Jurídica</li>
+										</ul>
+										-->
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" name="vitimaNomeCompleto">
+											<label class="mdl-textfield__label" for="sample3">Nome Completo</label>
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="vitimaRGCPF">
+											<label class="mdl-textfield__label" for="sample4">RG ou CPF</label>
+											<span class="mdl-textfield__error">Input is not a number!</span>
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" name="vitimaNacionalidade">
+											<label class="mdl-textfield__label" for="sample3">Nacionalidade</label>
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" name="vitimaDataNascimento">
+											<label class="mdl-textfield__label" for="sample3">Data de nascimento</label>
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" name="vitimaProfissao">
+											<label class="mdl-textfield__label" for="sample3">Profissão</label>
+										</div>
+
+										<div class="mdl-card__title">
+											<h2 class="mdl-card__title-text">Comunicante</h2> 
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" name="comunicanteNomeCompleto">
+											<label class="mdl-textfield__label" for="sample3">Nome Completo</label>
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="comunicanteRGCPF">
+											<label class="mdl-textfield__label" for="sample4">RG ou CPF</label>
+											<span class="mdl-textfield__error">Input is not a number!</span>
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" type="text" name="comunicanteTelefone">
+											<label class="mdl-textfield__label" for="sample3">Telefone</label>
+										</div>
+
+										<div class="mdl-card__title">
+											<h2 class="mdl-card__title-text">Relato do fato</h2>
+										</div>
+
+										<div class="mdl-textfield mdl-js-textfield">
+											<textarea class="mdl-textfield__input" type="text" rows="3" name="relatoFato"></textarea>
+											<label class="mdl-textfield__label" for="sample5">Descrição</label>
+										</div>
+
+										<div class="mdl-card__actions mdl-card--border">
+											<button onclick="cadastrarBO(); return false;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+												Cadastrar
+											</button>
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+												Cancelar
+											</button>
+										</div>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="mdl-cell--middle mdl-cell--2-col"></div>
+
+                    </div>
+
+					<!-- <button type="button" class="mdl-button show-modal">Show Modal</button> -->
+                    <dialog id="" class="mdl-dialog">
+                        <div class="mdl-dialog__content">
+                            <p>
+                                O seu Registro de Boletim de Ocorrência foi cadastrado e enviado para nossa equipe para avaliação.
+                                <br>
+                                <br> 
+								O Número do seu Protocolo é: <strong> <label id="numeroProtocolo">  </label> </strong>
+                            </p>
+                        </div>
+                        <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                            <button type="button" class="mdl-button close">OK</button>
+                        </div>
+                    </dialog>
+					
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="scroll-tab-3">
+                <div class="page-content">
+
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--middle mdl-cell--2-col"></div>
+                        <div class="mdl-cell--middle mdl-cell--8-col">
+
+                            <div class="mdl-card--border mdl-shadow--8dp">
+                                <div class="mdl-card__supporting-text helena-width-supporting-text">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="consultarNumeroProtocolo">
+                                        <label class="mdl-textfield__label" for="sample4">Número do Protocolo</label>
+                                        <span class="mdl-textfield__error">Input is not a number!</span>
+                                    </div>
+                                    <button onclick="consultarBO()" class="mdl-button mdl-js-button mdl-button--primary">
+                                        Consultar
+                                    </button>
+
+                                </div>
+                                <div id="resultado" class="mdl-card__supporting-text helena-width-supporting-text">
+									<!-- Results -->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="mdl-cell--middle mdl-cell--8-col"></div>
+                    </div>
+
+                </div>
+            </section>
+			
+            <!--
+			<button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--raised" type="button">Show Toast</button>
+			-->
+            <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+                <div class="mdl-snackbar__text"></div>
+                <button class="mdl-snackbar__action" type="button"></button>
+            </div>
+
+        </main>
+    </div>
+	
+	<script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

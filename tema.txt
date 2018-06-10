@@ -1,0 +1,27 @@
+Universidade do Estado de Santa Catarina - UDESC
+Curso: Tecnologia em Análise e Desenvolvimento de Sistemas - TADS
+Disciplina: Redes de Computadores
+
+Trabalho de Implementação com Sockets
+
+Tema 11. Sistema de Cadastro de Boletins de Ocorrência
+A aplicação (cliente-servidor) que tem como objetivo cadastrar Boletins de Ocorrência 
+e a possibilidade da visualização de BO's pelos policiais por data/área.
+Ocorre de maneira similar ao sistema de BO's pela internet.
+
+http://expressjs.com/pt-br/
+Express: 
+* é um framework para aplicativo da web do Node.js 
+* rápido, flexível e minimalista 
+* popular
+* permite desenvolver os direntes caminhos de URL (rotas)
+* permite implentar diferentes verbos HTTP (GET, POST, PUT, DELETE)
+
+https://socket.io/
+Socket.io
+* usa transporte WebSocket. WebSocket é uma conexão TCP e não uma conexão UDP. 
+* manipula as sessões que são criadas por um servidor web 
+
+npm install express
+npm install socket.io
+
