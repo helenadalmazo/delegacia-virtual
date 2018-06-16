@@ -21,7 +21,7 @@ http://expressjs.com/
 * é um framework para aplicativo da web do Node.js 
 * rápido, flexível e minimalista 
 * popular
-* permite desenvolver os direntes caminhos de URL (rotas)
+* permite desenvolver os difentes caminhos de URL (rotas)
 * permite implentar diferentes verbos HTTP (GET, POST, PUT, DELETE)
 
 ```
