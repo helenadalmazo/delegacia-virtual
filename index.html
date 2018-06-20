@@ -30,6 +30,7 @@
                 <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Bem vindo(a)!</a>
                 <a href="#scroll-tab-2" class="mdl-layout__tab">Cadastrar BO</a>
                 <a href="#scroll-tab-3" class="mdl-layout__tab">Consultar BO</a>
+				<a href="#scroll-tab-4" class="mdl-layout__tab">Banco de dados</a>
             </div>
         </header>
         <div class="mdl-layout__drawer">
@@ -275,7 +276,7 @@
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 											<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="vitimaRGCPF">
 											<label class="mdl-textfield__label" for="sample4">RG ou CPF</label>
-											<span class="mdl-textfield__error">Input is not a number!</span>
+											<span class="mdl-textfield__error">Valor não é um número</span>
 										</div>
 
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -305,7 +306,7 @@
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 											<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="comunicanteRGCPF">
 											<label class="mdl-textfield__label" for="sample4">RG ou CPF</label>
-											<span class="mdl-textfield__error">Input is not a number!</span>
+											<span class="mdl-textfield__error">Valor não é um número</span>
 										</div>
 
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -371,7 +372,7 @@
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="consultarNumeroProtocolo">
                                         <label class="mdl-textfield__label" for="sample4">Número do Protocolo</label>
-                                        <span class="mdl-textfield__error">Input is not a number!</span>
+                                        <span class="mdl-textfield__error">Valor não é um número</span>
                                     </div>
                                     <button onclick="consultarBO()" class="mdl-button mdl-js-button mdl-button--primary">
                                         Consultar
@@ -389,6 +390,41 @@
 
                 </div>
             </section>
+			
+			<section class="mdl-layout__tab-panel" id="scroll-tab-4">
+			
+				<div class="mdl-grid">
+					<div class="mdl-cell--middle mdl-cell--2-col"></div>
+					<div class="mdl-cell--middle mdl-cell--8-col">
+					
+						<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th class="mdl-data-table__cell--non-numeric">Protocolo</th>
+									<th class="mdl-data-table__cell--non-numeric">Modalidade</th>
+									<th class="mdl-data-table__cell--non-numeric">Data</th>
+									<th class="mdl-data-table__cell--non-numeric">Hora</th>
+									</tr>
+							</thead>
+							<tbody id="tableBO">
+								<!-- BOs cadastrados -->
+							</tbody>
+						</table>
+
+					</div>
+					<div class="mdl-cell--middle mdl-cell--8-col"></div>
+				</div>
+		
+			
+			
+			
+			
+			
+			
+			
+			
+				
+			</section>
 			
             <!--
 			<button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--raised" type="button">Show Toast</button>

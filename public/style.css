@@ -21,5 +21,9 @@
 }
 
 .mdl-textfield {
-	width: 800px;
+	width: 100%;
+}
+
+.mdl-data-table {
+	width: 100%;
 }

@@ -85,6 +85,8 @@ function cadastrarBO() {
 	
 	document.getElementById('numeroProtocolo').innerHTML = numeroProtocolo;
 	dialog.showModal();
+	
+	insertBO(bo);
 }
 
 
@@ -201,4 +203,29 @@ function loadForm(element) {
 	gridModalidades.style.display = 'none';
 	chipModalidade.innerHTML = element.target.innerHTML;
 	gridFormulario.style.display = 'flex';
+}
+
+function insertBO(bo) {
+	var tableBO = document.getElementById('tableBO');
+	
+	var newtr = document.createElement('tr');
+	
+	var tdProtocolo = document.createElement('td');	
+	tdProtocolo.innerText = bo.numeroProtocolo;
+	
+	var tdModalidade = document.createElement('td');
+	tdModalidade.innerText = bo.dadosOcorrencia.modalidade;
+	
+	var tdData = document.createElement('td');
+	tdData.innerText = bo.dadosOcorrencia.dataFato;
+	
+	var tdHora = document.createElement('td');
+	tdHora.innerText = bo.dadosOcorrencia.horaFato;
+	
+	newtr.append(tdProtocolo);
+	newtr.append(tdModalidade);
+	newtr.append(tdData);
+	newtr.append(tdHora);
+	
+	tableBO.append(newtr);
 }
