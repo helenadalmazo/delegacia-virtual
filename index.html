@@ -73,7 +73,7 @@
                         <div class="mdl-cell--middle mdl-cell--2-col"></div>
                     </div>
 
-                    <footer class="mdl-mini-footer">
+                    <footer style="display: none" class="mdl-mini-footer">
                         <div class="mdl-mini-footer__right-section">
                             <div class="mdl-logo">Title</div>
                             <ul class="mdl-mini-footer__link-list">
@@ -286,7 +286,7 @@
 
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 											<input class="mdl-textfield__input" type="text" name="vitimaDataNascimento">
-											<label class="mdl-textfield__label" for="sample3">Data de nascimento</label>
+											<label class="mdl-textfield__label" for="sample3">Data de Nascimento</label>
 										</div>
 
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -327,7 +327,7 @@
 											<button onclick="cadastrarBO(); return false;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
 												Cadastrar
 											</button>
-											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+											<button style="display:none" onclick="cancelar(); return false;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
 												Cancelar
 											</button>
 										</div>
@@ -367,7 +367,7 @@
                         <div class="mdl-cell--middle mdl-cell--2-col"></div>
                         <div class="mdl-cell--middle mdl-cell--8-col">
 
-                            <div class="mdl-card--border mdl-shadow--8dp">
+                            <div class="mdl-card--border mdl-shadow--2dp">
                                 <div class="mdl-card__supporting-text helena-width-supporting-text">
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="consultarNumeroProtocolo">
@@ -379,10 +379,14 @@
                                     </button>
 
                                 </div>
-                                <div id="resultado" class="mdl-card__supporting-text helena-width-supporting-text">
-									<!-- Results -->
-                                </div>
+                               
                             </div>
+							
+							<div class="mdl-card--border mdl-shadow--2dp">
+								<div id="resultado" class="mdl-card__supporting-text helena-width-supporting-text">
+									<!-- Results -->
+								</div>
+							</div>
 
                         </div>
                         <div class="mdl-cell--middle mdl-cell--8-col"></div>
@@ -414,15 +418,6 @@
 					</div>
 					<div class="mdl-cell--middle mdl-cell--8-col"></div>
 				</div>
-		
-			
-			
-			
-			
-			
-			
-			
-			
 				
 			</section>
 			

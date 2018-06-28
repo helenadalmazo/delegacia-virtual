@@ -13,6 +13,26 @@ socket.on('updateClientsCount', function(count) {
 	updateClientsCount(count);
 });
 
+socket.on('resultSearchBO', function(bo) {
+	if (bo == '') {
+		document.getElementById('resultado').innerHTML = 'Não houve resultado para o Número de Protocolo informado.'
+	} else {
+		visualizarBO(bo)
+	}
+});
+
+socket.on('BOsRegistered', function(bos) {
+	console.log('todos os BOS do sistema são: ' + bos);
+	for(var i = 0; i < bos.length; i++) {
+		insertBOOnTable(bos[i]);
+	}
+});
+
+socket.on('newBORegistered', function(bo) {
+	console.log('bo novo: ' + bo);
+	insertBOOnTable(bo);
+});
+
 //objetos
 function BoletimOcorrencia(numeroProtocolo, dadosOcorrencia, vitima, comunicante) {
 	this.numeroProtocolo = numeroProtocolo;
@@ -85,10 +105,7 @@ function cadastrarBO() {
 	
 	document.getElementById('numeroProtocolo').innerHTML = numeroProtocolo;
 	dialog.showModal();
-	
-	insertBO(bo);
 }
-
 
 var dialog = document.querySelector('dialog');
 //var showModalButton = document.querySelector('.show-modal');
@@ -123,14 +140,6 @@ function showUserDisconnected() {
 	snackbarContainer.MaterialSnackbar.showSnackbar(data);
 };
 
-socket.on('resultSearchBO', function(bo) {
-	if (bo == '') {
-		document.getElementById('resultado').innerHTML = 'Não houve resultado para o Número de Protocolo informado.'
-	} else {
-		visualizarBO(bo)
-	}
-});
-
 function consultarBO() {
 	var numeroProtocolo = document.getElementById('consultarNumeroProtocolo').value;
 	socket.emit('searchBO', numeroProtocolo);
@@ -140,8 +149,8 @@ function visualizarBO(bo) {
 	var resultado = document.getElementById('resultado');
 	var conteudo = '<p class="helena-titulo-primary-color"> Dados da Ocorrência </p>';
 	
-	conteudo = conteudo + bo.dadosOcorrencia.modalidade + '<br>';
-	conteudo = conteudo + bo.dadosOcorrencia.local + '<br>';
+	conteudo = conteudo + 'Modalidade: ' + bo.dadosOcorrencia.modalidade + '<br>';
+	conteudo = conteudo + 'Local: ' + bo.dadosOcorrencia.local + '<br>';
 	
 	var tipoLocal = "";
 	switch (bo.dadosOcorrencia.tipoLocal) {
@@ -150,36 +159,62 @@ function visualizarBO(bo) {
 		case '3': tipoLocal = 'Outros'; break;
 	}
 	
-	conteudo = conteudo + tipoLocal + '<br>';
-	conteudo = conteudo + bo.dadosOcorrencia.dataFato + '<br>';
-	conteudo = conteudo + bo.dadosOcorrencia.horaFato + '<br> <br>';
+	conteudo = conteudo + 'Tipo de Local: ' + tipoLocal + '<br>';
+	conteudo = conteudo + 'Data do fato: ' + bo.dadosOcorrencia.dataFato + '<br>';
+	conteudo = conteudo + 'Hora do fato: ' + bo.dadosOcorrencia.horaFato + '<br> <br>';
 	
 	conteudo = conteudo + ' <p class="helena-titulo-primary-color"> Vítima </p>';
 	
-	conteudo = conteudo + bo.vitima.nomeCompleto + '<br>';
-	conteudo = conteudo + bo.vitima.RGCPF + '<br>';
-	conteudo = conteudo + bo.vitima.nacionalidade + '<br>';
-	conteudo = conteudo + bo.vitima.dataNascimento + '<br>';
-	conteudo = conteudo + bo.vitima.profissao + '<br> <br>';
-	
+	conteudo = conteudo + 'Nome Completo: ' + bo.vitima.nomeCompleto + '<br>';
+	conteudo = conteudo + 'RG ou CPF: ' + bo.vitima.RGCPF + '<br>';
+	conteudo = conteudo + 'Nacionalidade: ' + bo.vitima.nacionalidade + '<br>';
+	conteudo = conteudo + 'Data de Nascimento: ' + bo.vitima.dataNascimento + '<br>';
+	conteudo = conteudo + 'Profisssão: ' + bo.vitima.profissao + '<br> <br>';
 	
 	conteudo = conteudo + ' <p class="helena-titulo-primary-color"> Comunicante </p>';
 	
-	conteudo = conteudo + bo.comunicante.nomeCompleto + '<br>';
-	conteudo = conteudo + bo.comunicante.RGCPF + '<br>';
-	conteudo = conteudo + bo.comunicante.telefone + '<br> <br>';
+	conteudo = conteudo + 'Nome Completo: ' + bo.comunicante.nomeCompleto + '<br>';
+	conteudo = conteudo + 'RG ou CPF: ' + bo.comunicante.RGCPF + '<br>';
+	conteudo = conteudo + 'Telefone: ' + bo.comunicante.telefone + '<br> <br>';
 	
 	conteudo = conteudo + ' <p class="helena-titulo-primary-color"> Relato do fato </p> ';
 	
-	conteudo = conteudo + bo.dadosOcorrencia.relatoFato + '<br> <br>';
+	conteudo = conteudo + 'Descrição: ' + bo.dadosOcorrencia.relatoFato + '<br> <br>';
 	
 	console.log(conteudo);	
 	
 	resultado.innerHTML = conteudo;
 }
 
+function insertBOOnTable(bo) {
+	var tableBO = document.getElementById('tableBO');
+	
+	var newtr = document.createElement('tr');
+	
+	var tdProtocolo = document.createElement('td');
+	tdProtocolo.className = 'mdl-data-table__cell--non-numeric';
+	tdProtocolo.innerText = bo.numeroProtocolo;
+	
+	var tdModalidade = document.createElement('td');
+	tdModalidade.className = 'mdl-data-table__cell--non-numeric';
+	tdModalidade.innerText = bo.dadosOcorrencia.modalidade;
+	
+	var tdData = document.createElement('td');
+	tdData.className = 'mdl-data-table__cell--non-numeric';
+	tdData.innerText = bo.dadosOcorrencia.dataFato;
+	
+	var tdHora = document.createElement('td');
+	tdHora.className = 'mdl-data-table__cell--non-numeric';
+	tdHora.innerText = bo.dadosOcorrencia.horaFato;
+	
+	newtr.append(tdProtocolo);
+	newtr.append(tdModalidade);
+	newtr.append(tdData);
+	newtr.append(tdHora);
+	
+	tableBO.append(newtr);
+}
 
-//dinamica das paginas
 var clientsCount = document.getElementById('clientsCount');
 var clientsCountBadge = document.getElementById('clientsCountBadge');
 
@@ -203,29 +238,4 @@ function loadForm(element) {
 	gridModalidades.style.display = 'none';
 	chipModalidade.innerHTML = element.target.innerHTML;
 	gridFormulario.style.display = 'flex';
-}
-
-function insertBO(bo) {
-	var tableBO = document.getElementById('tableBO');
-	
-	var newtr = document.createElement('tr');
-	
-	var tdProtocolo = document.createElement('td');	
-	tdProtocolo.innerText = bo.numeroProtocolo;
-	
-	var tdModalidade = document.createElement('td');
-	tdModalidade.innerText = bo.dadosOcorrencia.modalidade;
-	
-	var tdData = document.createElement('td');
-	tdData.innerText = bo.dadosOcorrencia.dataFato;
-	
-	var tdHora = document.createElement('td');
-	tdHora.innerText = bo.dadosOcorrencia.horaFato;
-	
-	newtr.append(tdProtocolo);
-	newtr.append(tdModalidade);
-	newtr.append(tdData);
-	newtr.append(tdHora);
-	
-	tableBO.append(newtr);
 }

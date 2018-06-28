@@ -51,54 +51,52 @@ http.listen(3000, function(){
   console.log('listening on port 3000');
 });
 
-
-//Exemplo
-/*
-io.on('connection', function (socket) {
-	socket.emit('news', { hello: 'world' });
-	socket.on('my other event', function (data) {
-		console.log(data);
-	});
-});
-*/
 var clientsCount = 0;
 
 //array de todos os boletins de ocorrencia cadastrados no sistema
 var bos = [];
 
-//io     = servidor
-//socket = cliente (client-side)
-io.on('connection', function (socket) {
-	var socketId = socket.id;
-	var clientIp = socket.request.connection.remoteAddress;
-	console.log('A client connected    - Socket ID = ' + socketId + ' | IP Address = ' +clientIp);
+//io     = socket servidor
+//client = socket cliente
+io.on('connection', function (client) {
+	var socketId = client.id;
+	var clientIp = client.request.connection.remoteAddress;
+	console.log('A client connected    - Socket ID = ' + socketId + ' | IP Address = ' + clientIp);
 	clientsCount++;
-	socket.broadcast.emit('userConnected');
-	io.emit('updateClientsCount', clientsCount);
 	
-	socket.on('disconnect', function () {
-		var socketId = socket.id;
-		var clientIp = socket.request.connection.remoteAddress;
+	// enviar para todos os clientes, exceto o atual
+	client.broadcast.emit('userConnected');
+	
+	// enviar apenas para o cliente atual
+	client.emit('BOsRegistered', bos);
+	
+	// enviar para todos os clientes, inclusive o atual
+	io.emit('updateClientsCount', clientsCount);
+		
+	client.on('disconnect', function () {
+		var socketId = client.id;
+		var clientIp = client.request.connection.remoteAddress;
 		console.log('A client disconnected - Socket ID = ' + socketId + ' | IP Address = ' +clientIp);
 		clientsCount--;
 		io.emit('userDisconnected');
 		io.emit('updateClientsCount', clientsCount);
 	});
 	
-	socket.on('registerBO', function (bo) {
+	client.on('registerBO', function (bo) {
 		bos.push(bo);
+		io.emit('newBORegistered', bo);
 	});
 	
-	socket.on('searchBO', function (numeroProtocolo) {
+	client.on('searchBO', function (numeroProtocolo) {
 		var boolean = false;
 		for(var i = 0; i < bos.length; i++) {
 			if (numeroProtocolo == bos[i].numeroProtocolo) {
 				boolean = true;
-				socket.emit('resultSearchBO', bos[i]);
+				client.emit('resultSearchBO', bos[i]);
 			}
 		}
 		if (!boolean) {
-			socket.emit('resultSearchBO', '');
+			client.emit('resultSearchBO', '');
 		}
 	});
 	
