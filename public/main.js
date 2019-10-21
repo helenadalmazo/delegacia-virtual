@@ -33,7 +33,7 @@ socket.on('newBORegistered', function(bo) {
 	insertBOOnTable(bo);
 });
 
-//objetos
+//Objetos
 function BoletimOcorrencia(numeroProtocolo, dadosOcorrencia, vitima, comunicante) {
 	this.numeroProtocolo = numeroProtocolo;
 	this.dadosOcorrencia = dadosOcorrencia;
@@ -108,15 +108,10 @@ function cadastrarBO() {
 }
 
 var dialog = document.querySelector('dialog');
-//var showModalButton = document.querySelector('.show-modal');
 
 if (!dialog.showModal) {
 	dialogPolyfill.registerDialog(dialog);
 }
-
-//showModalButton.addEventListener('click', function() {
-//	dialog.showModal();
-//});
 
 dialog.querySelector('.close').addEventListener('click', function() {
 	dialog.close();
@@ -181,8 +176,6 @@ function visualizarBO(bo) {
 	
 	conteudo = conteudo + 'Descrição: ' + bo.dadosOcorrencia.relatoFato + '<br> <br>';
 	
-	console.log(conteudo);	
-	
 	resultado.innerHTML = conteudo;
 }
 
@@ -234,7 +227,6 @@ var gridFormulario  = document.getElementById('gridFormulario');
 var chipModalidade  = document.getElementById('chipModalidade');
 
 function loadForm(element) {
-//	console.log(element.target.innerHTML);
 	gridModalidades.style.display = 'none';
 	chipModalidade.innerHTML = element.target.innerHTML;
 	gridFormulario.style.display = 'flex';
